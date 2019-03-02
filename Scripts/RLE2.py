@@ -30,3 +30,5 @@ print(compressed)
 print(len(compressed))
 print(s)
 print(len(s))
+with open ("compimg.txt",'w') as f:
+    f.write(compressed)
