@@ -1,76 +1,138 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 12 16:29:48 2019
+Created on Mon Mar 14 20:36:41 2019
 
 @author: haneen
 """
 
-#this code reads json file and compresses it v1.0
+#this code reads json file and compresses it v2.0
 
 import json
-#from pprint import pprint
 
-
-#reading json file
 with open('CNN_info_Sample.json') as f:
     data = json.load(f)
-
+    
 layers = len(data['layers'])
-layerList = list()
+#layerList = list()
 
-#if layers > 3: 
-#    print('Invalid number of layers ' + str(len(data['layers'])))
-#    exit()
-
-prev_out_depth = None
+types = list()
 xs = list()
 ys = list()
-types = list()
-depths = list()
+in_depths = list()
+#in_depths.append(1)
+out_depths = list()
+#flag_in = 1
+#print(flag_in)
 
 for i in range(layers):
+    
     layer = data['layers'][i]
+    print('i', i)
     types.append(layer['layer_type'])
-    xs.append(layer['sx'])
-    ys.append(layer['sy'])
     
-    if i != 0:
-    if depths[i-1] != layer[i]['input_depth']:
-        print('out_depth != in_depth')
-    else:
-        depths[i] = layer[i]['out_depths']
+    flag_in = 0
+    
+    for element in layer:
+        
+        print('f', flag_in)
+        
+        if element == 'sx':
+            xs.append(layer['sx'])
+            if layer['sx'] > 5:
+                print('error')
+        elif element == 'sy':
+            ys.append(layer['sy'])
+            if layer['sy'] > 5:
+                print('error')
+        elif element == 'in_depth':
+            in_depths.append(layer['in_depth'])
+            print(i, 'in_depth', in_depths[-1])
+            flag_in = 1
+            if layer['in_depth'] > 8:
+                print('error')
+                
+        elif element == 'out_depth':
+            out_depths.append(layer['out_depth'])
+            if layer['out_depth'] > 8:
+                print('error')
+        
+        if element != 'filters':
+            print(element, layer[element])
             
-for i in range(layers):
-    print('layer ', i, ' type ', types[i], ' sx ',\
-          xs[i], ' sy ', ys[i], ' out_depth ', depths[i])
-    
+    if flag_in == 0:
+            in_depths.append(out_depths[i-1])
+            print(i, 'in_depth', in_depths[-1])
+                
+            
+for i in range(1, layers):
+    if(in_depths[i] != out_depths[i-1]):
+        print('Incorrect in_depth', i, in_depths[i], out_depths[i-1])
+#        exit()
+        
 bits = str()
+bits += '{0:02b}'.format(layers)
 
-#accessing each layer
+print('bits of layers', bits)
+
 for i in range(layers):
     
-    print(i)
-#    if i != 0 | i != 1:
-#        if data['layers'][i]['in_depth'] != prev_out_depth:
-#            print('out_depth != in_depth')
-    print('depth comparison', prev_out_depth)
-            
-#    print(data['layers'][i])
-    prev_out_depth = data['layers'][i]['out_depth']
-    print('layer output_depth: ')
-    print(data['layers'][i]['out_depth'])
+    bits += '{0:03b}'.format(data['layers'][i]['sx'])
+    bits += '{0:03b}'.format(data['layers'][i]['sy'])
+    bits += '{0:04b}'.format(data['layers'][i]['out_depth'])
+    if data['layers'][i]['layer_type'] == 'conv':
+        bits += '01'
+    elif data['layers'][i]['layer_type'] == 'fc':
+        bits += '10'
+    else:
+        bits += '11'
         
-    layerList.append(data['layers'][i])
-    print(len(data['layers'][i]))
+    if data['layers'][i]['layer_type'] == 'conv' or data['layers'][i]['layer_type'] == 'fc':
+        for f in data['layers'][i]['filters']:
+            for w in f['w'].values():
+                if w > 1:
+                    print('errooooooooooor')
+                elif w > 0:
+                    flag = 0
+                else:
+                    flag = 1
+                    
+                temp = abs(w)
+                count = 0
+                wb = str()
+                
+                while (temp != 0 and count < 16):
+                    temp = temp * 2
+                    wb += str(int(temp))
+#                    print(temp, int(temp) ^ flag, count)
+                    if temp >= 1:
+                        temp -= 1
+                    count += 1
+                
+                if flag == 1:
+                    wb = bin(2**16 - int(wb, 2))
+                    wb = wb[2:]
+                    
+                bits += str(wb)
+#                print(w, wb)
 
-#for i in range(layers):   
-#    print(data['layers'][i], '\n\n\n')
+#print(bits)
+prev_i = bits[0]
+count = 0
+lines = str()
+
+for i in bits:
     
-    if layerList[i]['layer_type'] == 'conv':
+    if prev_i == i and count < 127:
+        count += 1
+    else:
+        lines += i
+        lines += bin(count)[2:]
+        count = 0
         
-        print(layerList[i]['layer_type'])
-        
-        for j in range(len(layerList[i]['filters'])):
-            print(layerList[i]['filters'][i])
-            print('\n\n')
+lines += i
+lines += bin(count)[2:]
+print (lines, len(lines)/8)
+
+with open ("jsnC.txt",'w') as f:            
+    f.write(lines)
