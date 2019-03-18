@@ -9,7 +9,7 @@ z2
 cModel Technology
 dd:/programs/Modeltech_pe_edu_10.4a/examples
 Eio
-Z0 w1552922802
+Z0 w1552947748
 Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 Z3 dD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO
@@ -21,9 +21,9 @@ VB7MVVJTOT:bY?5cm1:Nc50
 !s100 P3To4Li=aaWRmfK??aMAa0
 Z6 OP;C;10.4a;61
 32
-Z7 !s110 1552922831
+Z7 !s110 1552948166
 !i10b 1
-Z8 !s108 1552922831.000000
+Z8 !s108 1552948166.000000
 Z9 !s90 -reportprogress|300|IO.vhd|
 Z10 !s107 IO.vhd|
 !i113 1
@@ -35,8 +35,8 @@ R2
 Z12 DEx4 work 2 io 0 22 B7MVVJTOT:bY?5cm1:Nc50
 l16
 L15
-VRUG2bOA;09TCO]KR4nLUC1
-!s100 kQPWYCo[fY^R_;D^@^ig72
+Z13 VRUG2bOA;09TCO]KR4nLUC1
+Z14 !s100 kQPWYCo[fY^R_;D^@^ig72
 R6
 32
 R7
