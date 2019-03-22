@@ -33,7 +33,7 @@ for i in range(x):
 # print(len(s)) # (28*28)=784
 # m=max(max(len(i) for i in re.findall(r'1+', s)),max(len(i) for i in re.findall(r'0+', s)))
 # bits =int(np.ceil(np.log2(m)))
-bits=8
+bits=7
 print(bits)
 compressed =""
 now=s[0] 
