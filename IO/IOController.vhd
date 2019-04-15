@@ -37,16 +37,25 @@ ARCHITECTURE behavioral	OF IOController IS
 
 COMPONENT nCounter	IS
 
-GENERIC(n	:	integer);
+GENERIC(n	:	integer:=8);
 
 	PORT(
 		i_clk	:	IN	std_logic;	--internal clock is chip, if we decide to have one
 		i_rst	:	IN	std_logic;	--reset signal sent from controller
 		i_en	:	IN	std_logic;	--enable for counter
 		o_cnt	:	OUT	std_logic_vector(n-1 downto 0)	--current count
-		);
+	);
+END COMPONENT;
 
+COMPONENT nReg IS
 
+GENERIC(n	:	integer	:=16);
+
+	PORT (
+		input		:	IN	std_logic_vector(n-1 downto 0);
+		en,rst,clk	:	IN	std_logic;
+		output		:	OUT	std_logic_vector(n-1 downto 0)
+	);
 END COMPONENT;
 
 TYPE state_type IS (s_init, s_waitO, s_deImg, s_deCNN, s_process, s_waitRI, s_waitRC , s_waitRL, s_sendR);	--defining states
@@ -129,42 +138,129 @@ BEGIN
 		END IF;
 	END PROCESS;
 	
-	imgAddCntr:	nCounter GENERIC MAP(10) PORT MAP(i_clk, enAddCntrImg, i_rst, imgAddLines(8 downto 0)); --assuming image size does not exceed 1024 byte i.e 32X32 pixel
-	addImg(n-1 downto 10) <= x'0'
+	imgAddCntr:	nCounter GENERIC MAP(11) PORT MAP(i_clk, enAddCntrImg, i_rst, imgAddLines(9 downto 0)); --assuming image size does not exceed 1024 byte i.e 32X32 pixel
+	ImgAddLines(10) <= '0';
 
-	CNNAddCntr:	nCounter GENERIC MAP(10) PORT MAP(i_clk, enAddCntrCNN, i_rst, CNNAddLines(8 downto 0));
-	addCNN(n-1 downto 10) <= "F"
+	CNNAddCntr:	nCounter GENERIC MAP(10) PORT MAP(i_clk, enAddCntrCNN, i_rst, CNNAddLines(9 downto 0));
+	CNNAddLines(10) <= '1';
 
-	rsltAddReg:	nReg	GENERIC MAP(n) PORT MAP(x"F", enAddRegRslt, 0, i_clk, rsltAddLines);
+	rsltAddReg:	nReg GENERIC MAP(n) PORT MAP(x"FFFF", enAddRegRslt, '0', i_clk, rsltAddLines);
 
 	PROCESS(t_state)
 	BEGIN
 		CASE t_state IS
 			WHEN s_init =>
 				o_rst <= '1';
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_process <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 				
 			WHEN s_waitO =>
 				o_ready <= '1';
+				o_rst <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_process <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 
 			WHEN s_deImg =>
 				o_loadDecompImg <= '1';
+				o_rst <= '0';
+				o_ready <= '0';
+				o_loadDecompCNN <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_process <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 
 			WHEN s_deCNN =>
 				o_loadDecompCNN <= '1';
+				o_rst <= '0';
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_process <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 			
 			WHEN s_waitRI =>
-				o_writeMem <= i_wordI;
-				enAddCntrImg <= i_wordI;
+				IF(i_wordI = '1')	THEN
+					o_writeMem <= '1';
+					enAddCntrImg <= '1';
+
+				ELSE
+					o_writeMem <= '0';
+					enAddCntrImg <= '0';
+				END IF;
+
+				o_rst <= '0';
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				enAddCntrCNN <= '0';
+				o_process <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 	
 			WHEN s_waitRC =>
-				o_writeMem <= i_wordC;
-				enAddCntrCNN <= i_wordC;
+				IF(i_wordC = '1')	THEN
+					o_writeMem <= '1';
+					enAddCntrCNN <= '1';
+
+				ELSE
+					o_writeMem <= '0';
+					enAddCntrCNN <= '0';
+				END IF;	
+
+				o_rst <= '0';
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				enAddCntrImg <= '0';
+				o_process <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 	
 			WHEN s_process =>
 				o_process <= '1';
+				o_rst <= '0';
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
 
 			WHEN s_sendR =>
 				o_done <= '1';
 				o_readMem <= '1';
+				o_rst <= '0';
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_process <= '0';
+	
+			WHEN OTHERS =>
 
+		END CASE;
+	END PROCESS;
 END ARCHITECTURE;

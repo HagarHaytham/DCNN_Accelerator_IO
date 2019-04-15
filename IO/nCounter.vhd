@@ -6,7 +6,7 @@ USE IEEE.std_logic_Unsigned.all;
 
 ENTITY upCounter IS
 
-GENERIC(n	:	integer);
+GENERIC(n	:	integer:=8);
 
 	PORT(
 		i_clk	:	IN	std_logic;	--internal clock is chip, if we decide to have one
@@ -22,16 +22,18 @@ ARCHITECTURE behavioral OF upCounter IS
 SIGNAL count	:	std_logic_vector(n-1 downto 0);
 
 BEGIN
-	process(i_clk, i_rst)
+	process(i_clk)
 	BEGIN
 		IF rising_edge(i_clk)	THEN
 
 			IF(i_rst = '1')	THEN
-				count <= x"0";
+				count <= "00000000";
 
-			ELSIF(i_en = '1')	THEN
-				count <= count + x"1";
-
+			ELSIF(i_rst = '0' and i_en = '1')	THEN
+				count <= count + 1;
+			
+			ELSE
+				count <= count;
 			END IF;
 		END IF;
 	END PROCESS;
