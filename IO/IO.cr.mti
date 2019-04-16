@@ -25,22 +25,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity Ram
 -- Compiling architecture RamArch of Ram
 
-} {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity IOController
--- Compiling architecture ArchIOController of IOController
-
-} {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity nReg
--- Compiling architecture nRegArch of nReg
-
 } {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
