@@ -1,1 +1,5 @@
 /IO/work/*
+/IO/*.mpf
+/IO/*.mti
+/IO/*.wlf
+/IO/*.bak
