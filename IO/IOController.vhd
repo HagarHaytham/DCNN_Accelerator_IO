@@ -25,17 +25,16 @@ GENERIC(n	:	integer	:=	16);
 		o_loadDecompImg	:	OUT	std_logic;	--signal to load packet to decompression counters of Image
 		o_writeMem	:	OUT	std_logic;	--signal write sent to memory
 		o_readMem	:	OUT	std_logic;	--signal read sent to memory
-		o_address	:	OUT	std_logic_vector(n-1 downto 0);	--address to write to
---		o_addImg	:	OUT	std_logic_vector(n-1 downto 0);	--address to write next image word at 
 		o_process	:	OUT	std_logic;	--signal to CNN logic to process data
-		o_done		:	OUT	std_logic	--signal sent by chip, when it finishes processing
+		o_done		:	OUT	std_logic;	--signal sent by chip, when it finishes processing
+		o_address	:	OUT	std_logic_vector(15 downto 0)	--address to write to
 		);
 
 END ENTITY;
 
 ARCHITECTURE behavioral	OF IOController IS
 
-COMPONENT nCounter	IS
+COMPONENT upCounter	IS
 
 GENERIC(n	:	integer:=8);
 
@@ -73,9 +72,9 @@ SIGNAL t_state		:	state_type;	--current state
 SIGNAL enAddCntrCNN	:	std_logic;	--enable for CNN address counter
 SIGNAL enAddCntrImg	:	std_logic;	--enable for image address counter
 SIGNAL enAddRegRslt	:	std_logic;	--
-SIGNAL imgAddLines	:	std_logic_vector(n-1 downto 0);
-SIGNAL CNNAddLines	:	std_logic_vector(n-1 downto 0);
-SIGNAL rsltAddLines	:	std_logic_vector(n-1 downto 0);
+SIGNAL imgAddLines	:	std_logic_vector(15 downto 0);
+SIGNAL CNNAddLines	:	std_logic_vector(15 downto 0);
+SIGNAL rsltAddLines	:	std_logic_vector(15 downto 0);
 --SIGNAL loadC		:	std_logic;	--signal to load initial addresses to addresses counters
 
 
@@ -138,13 +137,13 @@ BEGIN
 		END IF;
 	END PROCESS;
 	
-	imgAddCntr:	nCounter GENERIC MAP(11) PORT MAP(i_clk, enAddCntrImg, i_rst, imgAddLines(9 downto 0)); --assuming image size does not exceed 1024 byte i.e 32X32 pixel
-	ImgAddLines(10) <= '0';
+	imgAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrImg, imgAddLines(9 downto 0)); --assuming image size does not exceed 1024 byte i.e 32X32 pixel
+	imgAddLines(15 downto 10) <= "000000";
 
-	CNNAddCntr:	nCounter GENERIC MAP(10) PORT MAP(i_clk, enAddCntrCNN, i_rst, CNNAddLines(9 downto 0));
-	CNNAddLines(10) <= '1';
+	CNNAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrCNN, CNNAddLines(9 downto 0));
+	CNNAddLines(15 downto 10) <= "000001";
 
-	rsltAddReg:	nReg GENERIC MAP(n) PORT MAP(x"FFFF", enAddRegRslt, '0', i_clk, rsltAddLines);
+	rsltAddReg:	nReg GENERIC MAP(16) PORT MAP(x"FFFF", enAddRegRslt, i_rst, i_clk, rsltAddLines);
 
 	PROCESS(t_state)
 	BEGIN
@@ -201,6 +200,7 @@ BEGIN
 				IF(i_wordI = '1')	THEN
 					o_writeMem <= '1';
 					enAddCntrImg <= '1';
+					o_address <= ImgAddLines;
 
 				ELSE
 					o_writeMem <= '0';
@@ -220,6 +220,7 @@ BEGIN
 				IF(i_wordC = '1')	THEN
 					o_writeMem <= '1';
 					enAddCntrCNN <= '1';
+					o_address <= CNNAddLines;
 
 				ELSE
 					o_writeMem <= '0';
@@ -250,6 +251,7 @@ BEGIN
 			WHEN s_sendR =>
 				o_done <= '1';
 				o_readMem <= '1';
+				o_address <= rsltAddLines;
 				o_rst <= '0';
 				o_ready <= '0';
 				o_loadDecompImg <= '0';
@@ -260,7 +262,6 @@ BEGIN
 				o_process <= '0';
 	
 			WHEN OTHERS =>
-
 		END CASE;
 	END PROCESS;
 END ARCHITECTURE;
