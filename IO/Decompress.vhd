@@ -1,16 +1,16 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-entity Decompress is
+entity DecompressImage is
     Port(clk: in std_logic;
         rst: in std_logic;
         din : in std_logic_vector(15 downto 0);
         proces : in std_logic;
-        decompressed,word : out std_logic;
+        decompressed : out std_logic;
         dataOut :  out std_logic_vector(15 downto 0));
-end entity Decompress;
+end entity DecompressImage;
 
-architecture ArchIODecompress of Decompress is
+architecture ArchIODecompressImage of DecompressImage is
     component Counter is
         Port ( clk,rst,en : in  STD_LOGIC;      
                dir : in  STD_LOGIC;     -- direction of counter (up or down)
@@ -26,7 +26,11 @@ begin
   --  deb<=din(14 downto 8);
 process (proces,cnt,cnt2,clk)
     begin
-    if (clk'Event and clk = '1') then
+    if (rst='1') then
+        decompressed<='0';
+        rstc1<='1';
+        rstc2<='1';
+    elsif (clk'Event and clk = '1') then
         if (proces='1') then
             if (din(14 downto 8) ="0000000" )then
                 decompressed<='1';
@@ -69,8 +73,7 @@ dataOut<= (others=>'1') when packet='0' and din(15) ='1'
 else (others=>'0') when packet='0' and din(15) ='0'
 else (others=>'1') when packet='1' and din(7)='1'
 else (others=>'0') ;--when packet='1' and din(7)='0'
-word<='1';
 
-end ArchIODecompress;
+end ArchIODecompressImage;
 
 
