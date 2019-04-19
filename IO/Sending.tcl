@@ -83,11 +83,11 @@ for { set i 0 }  {$i < $sz} {set i [expr {$i + 15}]} {
     incr j
     set x [examine Ready]
     puts $x
-    set k 0
-     while {$x == 0 && $k <5} {
-    #while {$x==0} {}
+    # set k 0
+    #  while {$x == 0 && $k <5} {
+    while {$x==0} {}
         run
-         incr k
+        #  incr k
     }
 }
 
