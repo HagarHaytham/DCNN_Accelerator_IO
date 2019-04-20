@@ -51,7 +51,7 @@ process (proces,cnt,cnt2,clk,bgn,packet)
             -- bgn<='0';
             -- word<='0';
             decompressed<='0';
-
+            word<='0';
         else-- proces =0
             if (bgn='1' and packet='0' and din(14 downto 8) ="0000000")  then -- process the first packet
                 decompressed<='1';
@@ -90,7 +90,7 @@ process (proces,cnt,cnt2,clk,bgn,packet)
             --     en2 <='0';
             --     bgn<='0';
             --     word<='0';
-            else
+            elsif (en1='1' or en2='1') then
                 word<='1';
             end if;
 
