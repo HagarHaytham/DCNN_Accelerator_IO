@@ -25,7 +25,7 @@ signal rstc1 : std_logic ;--:= rst;
 signal rstc2 : std_logic ;--:= rst;
 signal decomp:std_logic:='0';
 begin
-process (proces,cnt,cnt2,clk,bgn,packet)
+process (proces,rst,cnt,cnt2,clk,bgn,packet)
     begin
     if (rst='1') then
         decomp<='0';
@@ -34,6 +34,9 @@ process (proces,cnt,cnt2,clk,bgn,packet)
         rstc2<='1';
         bgn<='0';
         word<='0';
+        en1<='0';
+        en2<='0';
+        packet<='0';
     elsif (clk'Event and clk = '1') then
         if (proces='1') then
             bgn<='1';

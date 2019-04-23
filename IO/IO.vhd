@@ -4,7 +4,7 @@ entity IO is
     Port(clk: in std_logic;
         rst: in std_logic;
         interrupt :in std_logic;
-        loadProcess :in std_logic;
+        loadProcess :in std_logic;  
         CNNImage: in std_logic;
         ready : out std_logic;
         done : out std_logic;
