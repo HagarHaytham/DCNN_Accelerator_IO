@@ -1,0 +1,5 @@
+load_library tsmc035_typ
+read -technology "tsmc035_typ"  { /home/ayman/Desktop/IO/DecompressImage.vhd }
+read -technology "tsmc035_typ"  { /home/ayman/Desktop/IO/Counter.vhd }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 

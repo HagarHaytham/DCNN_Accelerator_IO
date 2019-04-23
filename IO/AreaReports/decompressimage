@@ -1,0 +1,34 @@
+
+*******************************************************
+
+Cell: DecompressImage    View: ArchIODecompressImage    Library: work
+
+*******************************************************
+
+
+ Cell       Library  References     Total Area
+
+aoi21       tsmc035_typ     2 x      1      2 gates
+aoi422      tsmc035_typ     1 x      3      3 gates
+dffr        tsmc035_typ    21 x      6    117 gates
+dffs_ni     tsmc035_typ     2 x      6     12 gates
+inv01       tsmc035_typ    32 x      1     24 gates
+inv02       tsmc035_typ     3 x      1      2 gates
+mux21       tsmc035_typ     2 x      2      4 gates
+nand02      tsmc035_typ    35 x      1     35 gates
+nand03      tsmc035_typ    15 x      1     19 gates
+nand04      tsmc035_typ     7 x      1     10 gates
+nor02_2x    tsmc035_typ    28 x      1     28 gates
+nor02ii     tsmc035_typ     6 x      1      7 gates
+nor03_2x    tsmc035_typ    12 x      1     15 gates
+oai21       tsmc035_typ    18 x      1     22 gates
+xnor2       tsmc035_typ    56 x      2    107 gates
+
+ Number of ports :                      37
+ Number of nets :                      277
+ Number of instances :                 240
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     408
+ Number of accumulated instances :     240
