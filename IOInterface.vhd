@@ -27,17 +27,6 @@ SIGNAL enReg	:	std_logic;
 BEGIN
 
 	packetReg:	nReg GENERIC MAP(16) PORT MAP(i_data, enReg, i_rst, i_clk, o_data);
+	enReg <= i_int and i_load;
 
-	PROCESS(i_clk)
-	BEGIN
-		IF rising_edge(i_clk)	THEN
-
-			IF(i_int = '1' and i_load = '1')	THEN
-				enReg <= '1';
-
-			ELSE
-
-			END IF;
-		END IF;
-	END PROCESS;
 END ARCHITECTURE;
