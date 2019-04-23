@@ -118,7 +118,7 @@ if(rising_edge(clk)) then
 			end if;
 
 
-			if(LorR='0' and dnCount="0000000") then 
+			if(LorR='1' and dnCount="0000000") then 
 				if(wdDone = '1') then 
 					delayedPacket <='1';
 				else
