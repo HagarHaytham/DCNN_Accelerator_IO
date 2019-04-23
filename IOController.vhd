@@ -50,6 +50,17 @@ GENERIC(n	:	integer:=8);
 	);
 END COMPONENT;
 
+--COMPONENT nReg IS
+--
+--GENERIC(n	:	integer	:=16);
+--
+--	PORT (
+--		input		:	IN	std_logic_vector(n-1 downto 0);
+--		en,rst,clk	:	IN	std_logic;
+--		output		:	OUT	std_logic_vector(n-1 downto 0)
+--	);
+--END COMPONENT;
+--
 TYPE state_type IS (s_init, s_waitO, s_deImg, s_deCNN, s_process, s_waitRI, s_waitRC , s_waitRL, s_sendR);	--defining states
 --s_init	initialization state, to initialize addresses and registers
 --s_waitO	wait for CPU to send packet or command, sends ready signal ready to CPU to indicate that it's ready
@@ -65,14 +76,14 @@ SIGNAL t_currentState	:	state_type;	--current state
 SIGNAL t_nextState	:	state_type;	--next state
 SIGNAL enAddCntrCNN	:	std_logic;	--enable for CNN address counter
 SIGNAL enAddCntrImg	:	std_logic;	--enable for image address counter
+--SIGNAL enAddRegRslt	:	std_logic;	--
+--SIGNAL sel		:	std_logic;
 SIGNAL imgAddLines	:	std_logic_vector(9 downto 0);
 SIGNAL CNNAddLines	:	std_logic_vector(9 downto 0);
+--SIGNAL loadC		:	std_logic;	--signal to load initial addresses to addresses counters
+
 
 BEGIN
-
-	imgAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrImg, imgAddLines(9 downto 0)); --assuming image 		size does not exceed 1024 byte i.e 32X32 pixel
-	
-	CNNAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrCNN, CNNAddLines(9 downto 0));
 
 	PROCESS(t_currentState, i_int, i_decompI, i_decompC, i_processDone, i_op, i_dtype)
 	BEGIN
@@ -141,7 +152,68 @@ BEGIN
 			t_currentState <= t_nextState;
 		END IF;
 	END PROCESS;
+
+--
+--			IF(i_rst = '0')	THEN
+--
+--				IF(t_state = s_init)	THEN
+--					t_state <= s_waitO;
+--
+--				ELSIF(t_state = s_waitO)	THEN
+--
+--					IF(i_int = '1' and i_op = '1' and i_dtype = '1')	THEN
+--						t_state <= s_deImg;
+--
+--					ELSIF(i_int = '1' and i_op = '1' and i_dtype = '0')	THEN
+--						t_state <= s_deCNN;
+--
+--					ELSIF(i_int = '1' and i_op = '0')	THEN
+--						t_state <= s_process;
+--					END IF;
+--
+--				ELSIF(t_state = s_deImg)	THEN
+--					t_state <= s_waitRI;
+--
+--				ELSIF(t_state = s_deCNN)	THEN
+--					t_state <= s_waitRC;
+--
+--				ELSIF(t_state = s_process)	THEN
+--					t_state <= s_waitRL;
+--					
+--				ELSIF(t_state = s_waitRI)	THEN
+--
+--					IF(i_decompI = '1')	THEN
+--						t_state <= s_waitO;
+--					END IF;
+--
+--				ELSIF(t_state = s_waitRC)	THEN
+--
+--					IF(i_decompC = '1')	THEN
+--						t_state <= s_waitO;
+--					END IF;
+--			
+--				ELSIF(t_state = s_waitRL)	THEN
+--
+--					IF(i_processDone = '1')	THEN
+--						t_state <= s_sendR;	
+--					END IF;					
+--
+--				ELSIF(t_state = s_sendR)	THEN
+--					t_state <= s_waitO;
+--				END IF;
+--			END IF;
+--		END IF;
+--	END PROCESS;
+--	
+	imgAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrImg, imgAddLines(9 downto 0)); --assuming image size does not exceed 1024 byte i.e 32X32 pixel
 	
+	CNNAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrCNN, CNNAddLines(9 downto 0));
+
+--	loop0:	FOR i IN 0 TO 9 GENERATE
+--			addMux:	mux2X1 PORT MAP(imgAddLines(i), CNNAddLines(i), sel, o_address(i));
+--		END GENERATE; 
+
+
 	PROCESS(t_currentState, i_wordI, I_wordC, imgAddLines, CNNAddLines)
 	BEGIN
 		CASE t_currentState IS
