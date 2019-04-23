@@ -1,8 +1,13 @@
 --Design of IO Control
+
 --Implemented as a Moore machine (input function of state)
---using two processes, the first clocked for state calculation and the second combinational for output
---set initial address to CNN
+
+--using three processes, the first combinational for next state calculation, the second clocked
+--for current state update and the third combinational for output calculation.
+
+--set initial address of CNN
 --try to buffer i_clk to addresses counters if a delay is needed
+
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
 
@@ -19,10 +24,9 @@ GENERIC(n	:	integer	:=	16);
 		i_decompC	:	IN	std_logic;	--signal sent from CNN decompression, to indicate decompression finished
 		i_wordC		:	IN	std_logic;	--signal sent from CNN decompression, to indicate a word is ready
 		i_processDone	:	IN	std_logic;	--signal sent from CNN logic, result is ready
-		o_rst		:	OUT	std_logic;	--reset signal, to reset addresses
 		o_ready		:	OUT	std_logic;	--signal sent by chip, to inform CPU that chip is ready to receive
-		o_loadDecompCNN	:	OUT	std_logic;	--signal to load packet to decompression counters of CNN
 		o_loadDecompImg	:	OUT	std_logic;	--signal to load packet to decompression counters of Image
+		o_loadDecompCNN	:	OUT	std_logic;	--signal to load packet to decompression counters of CNN
 		o_writeMem	:	OUT	std_logic;	--signal write sent to memory
 		o_readMem	:	OUT	std_logic;	--signal read sent to memory
 		o_process	:	OUT	std_logic;	--signal to CNN logic to process data
@@ -46,17 +50,17 @@ GENERIC(n	:	integer:=8);
 	);
 END COMPONENT;
 
-COMPONENT nReg IS
-
-GENERIC(n	:	integer	:=16);
-
-	PORT (
-		input		:	IN	std_logic_vector(n-1 downto 0);
-		en,rst,clk	:	IN	std_logic;
-		output		:	OUT	std_logic_vector(n-1 downto 0)
-	);
-END COMPONENT;
-
+--COMPONENT nReg IS
+--
+--GENERIC(n	:	integer	:=16);
+--
+--	PORT (
+--		input		:	IN	std_logic_vector(n-1 downto 0);
+--		en,rst,clk	:	IN	std_logic;
+--		output		:	OUT	std_logic_vector(n-1 downto 0)
+--	);
+--END COMPONENT;
+--
 TYPE state_type IS (s_init, s_waitO, s_deImg, s_deCNN, s_process, s_waitRI, s_waitRC , s_waitRL, s_sendR);	--defining states
 --s_init	initialization state, to initialize addresses and registers
 --s_waitO	wait for CPU to send packet or command, sends ready signal ready to CPU to indicate that it's ready
@@ -68,88 +72,153 @@ TYPE state_type IS (s_init, s_waitO, s_deImg, s_deCNN, s_process, s_waitRI, s_wa
 --s_waitRL	wait for Accelerator Logic HW to finish processing
 --s_sendR	atate to send result to CPU
 
-SIGNAL t_state		:	state_type;	--current state
+SIGNAL t_currentState	:	state_type;	--current state
+SIGNAL t_nextState	:	state_type;	--next state
 SIGNAL enAddCntrCNN	:	std_logic;	--enable for CNN address counter
 SIGNAL enAddCntrImg	:	std_logic;	--enable for image address counter
-SIGNAL enAddRegRslt	:	std_logic;	--
-SIGNAL imgAddLines	:	std_logic_vector(15 downto 0);
-SIGNAL CNNAddLines	:	std_logic_vector(15 downto 0);
-SIGNAL rsltAddLines	:	std_logic_vector(15 downto 0);
+--SIGNAL enAddRegRslt	:	std_logic;	--
+--SIGNAL sel		:	std_logic;
+SIGNAL imgAddLines	:	std_logic_vector(9 downto 0);
+SIGNAL CNNAddLines	:	std_logic_vector(9 downto 0);
 --SIGNAL loadC		:	std_logic;	--signal to load initial addresses to addresses counters
 
 
 BEGIN
-	PROCESS(i_clk)
+
+	PROCESS(t_currentState, i_int, i_decompI, i_decompC, i_processDone, i_op, i_dtype)
 	BEGIN
-		IF rising_edge(i_clk)	THEN
+		CASE t_currentState IS
+			WHEN s_init =>
+				t_nextState <= s_waitO;
 
-			IF(i_rst = '1')	THEN	
-				t_state <= s_init;	--setting initial state
+			WHEN s_waitO =>
+				IF(i_int = '1' and i_op = '1' and i_dtype = '1')	THEN
+					t_nextState <= s_deImg;
 
-			ELSE
-				CASE t_state IS
-					WHEN s_init =>
-						t_state <= s_waitO;
+				ELSIF(i_int = '1' and i_op = '1' and i_dtype ='0')	THEN
+					t_nextState <= s_deCNN;
 
-					WHEN s_waitO =>
+				ELSIF(i_int = '1' and i_op = '0')	THEN
+					t_nextState <= s_process;
 
-						IF(i_int = '1' and i_op = '1' and i_dtype = '1')	THEN
-							t_state <= s_deImg;
+				ELSE
+					t_nextState <= t_currentState;
+				END IF;
 
-						ELSIF(i_int = '1' and i_op = '1' and i_dtype = '0')	THEN
-							t_state <= s_deCNN;
+			WHEN s_deImg =>
+				t_nextState <= s_waitRI;
 
-						ELSIF(i_int = '1' and i_op = '0')	THEN
-							t_state <= s_process;
-						END IF;
+			WHEN s_deCNN =>
+				t_nextState <= s_waitRC;
 
-					WHEN s_deImg =>
-						t_state <= s_waitRI;
+			WHEN s_process =>
+				t_nextState <= s_waitRL;
 
-					WHEN s_deCNN =>
-						t_state <= s_waitRC;
-
-					WHEN s_process =>
-						t_state <= s_waitRL;
-					
-					WHEN s_waitRI => 
-
-						IF(i_decompI = '1')	THEN
-							t_state <= s_waitO;
-						END IF;
-
-					WHEN s_waitRC =>
-
-						IF(i_decompC = '1')	THEN
-							t_state <= s_waitO;
-						END IF;
+			WHEN s_waitRI =>
+				IF(i_decompI = '1')	THEN
+					t_nextState <= s_waitO;
 			
-					WHEN s_waitRL =>
+				ELSE
+					t_nextState <= t_currentState;
+				END IF;
 
-						IF(i_processDone = '1')	THEN
-							t_state <= s_sendR;	
-						END IF;					
+			WHEN s_waitRC =>
+				IF(i_decompC = '1')	THEN
+					t_nextState <= s_waitO;
 
-					WHEN s_sendR =>
-						t_state <= s_waitO;
-				END CASE;
-			END IF;
+				ELSE
+					t_nextState <= t_currentState;
+				END IF;
+
+			WHEN s_waitRL =>
+				IF(i_processDone = '1')	THEN
+					t_nextState <= s_sendR;
+
+				ELSE
+					t_nextState <= t_currentState;
+				END IF;
+
+			WHEN s_sendR =>
+				t_nextState <= s_waitO;
+		END CASE;
+	END PROCESS;
+
+	PROCESS(i_clk, i_rst)
+	BEGIN
+		IF(i_rst = '1')	THEN
+			t_currentState <= s_init;
+
+		ELSIF rising_edge(i_clk)	THEN
+			t_currentState <= t_nextState;
 		END IF;
 	END PROCESS;
-	
+
+--
+--			IF(i_rst = '0')	THEN
+--
+--				IF(t_state = s_init)	THEN
+--					t_state <= s_waitO;
+--
+--				ELSIF(t_state = s_waitO)	THEN
+--
+--					IF(i_int = '1' and i_op = '1' and i_dtype = '1')	THEN
+--						t_state <= s_deImg;
+--
+--					ELSIF(i_int = '1' and i_op = '1' and i_dtype = '0')	THEN
+--						t_state <= s_deCNN;
+--
+--					ELSIF(i_int = '1' and i_op = '0')	THEN
+--						t_state <= s_process;
+--					END IF;
+--
+--				ELSIF(t_state = s_deImg)	THEN
+--					t_state <= s_waitRI;
+--
+--				ELSIF(t_state = s_deCNN)	THEN
+--					t_state <= s_waitRC;
+--
+--				ELSIF(t_state = s_process)	THEN
+--					t_state <= s_waitRL;
+--					
+--				ELSIF(t_state = s_waitRI)	THEN
+--
+--					IF(i_decompI = '1')	THEN
+--						t_state <= s_waitO;
+--					END IF;
+--
+--				ELSIF(t_state = s_waitRC)	THEN
+--
+--					IF(i_decompC = '1')	THEN
+--						t_state <= s_waitO;
+--					END IF;
+--			
+--				ELSIF(t_state = s_waitRL)	THEN
+--
+--					IF(i_processDone = '1')	THEN
+--						t_state <= s_sendR;	
+--					END IF;					
+--
+--				ELSIF(t_state = s_sendR)	THEN
+--					t_state <= s_waitO;
+--				END IF;
+--			END IF;
+--		END IF;
+--	END PROCESS;
+--	
 	imgAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrImg, imgAddLines(9 downto 0)); --assuming image size does not exceed 1024 byte i.e 32X32 pixel
-	imgAddLines(15 downto 10) <= "000000";
-
+	
 	CNNAddCntr:	upCounter GENERIC MAP(10) PORT MAP(i_clk, i_rst, enAddCntrCNN, CNNAddLines(9 downto 0));
-	CNNAddLines(15 downto 10) <= "000001";
 
-	rsltAddReg:	nReg GENERIC MAP(16) PORT MAP(x"FFFF", enAddRegRslt, i_rst, i_clk, rsltAddLines);
+--	loop0:	FOR i IN 0 TO 9 GENERATE
+--			addMux:	mux2X1 PORT MAP(imgAddLines(i), CNNAddLines(i), sel, o_address(i));
+--		END GENERATE; 
 
-	PROCESS(t_state)
+
+	PROCESS(t_currentState, i_wordI, I_wordC, imgAddLines, CNNAddLines)
 	BEGIN
-		CASE t_state IS
+		CASE t_currentState IS
 			WHEN s_init =>
-				o_rst <= '1';
+				o_address <= x"0000";
 				o_ready <= '0';
 				o_loadDecompImg <= '0';
 				o_loadDecompCNN <= '0';
@@ -159,10 +228,11 @@ BEGIN
 				o_process <= '0';
 				o_done <= '0';
 				o_readMem <= '0';
-				
+					
 			WHEN s_waitO =>
 				o_ready <= '1';
-				o_rst <= '0';
+
+				o_address <= x"0000";
 				o_loadDecompImg <= '0';
 				o_loadDecompCNN <= '0';
 				o_writeMem <= '0';
@@ -174,7 +244,8 @@ BEGIN
 
 			WHEN s_deImg =>
 				o_loadDecompImg <= '1';
-				o_rst <= '0';
+
+				o_address <= x"0000";
 				o_ready <= '0';
 				o_loadDecompCNN <= '0';
 				o_writeMem <= '0';
@@ -186,7 +257,8 @@ BEGIN
 
 			WHEN s_deCNN =>
 				o_loadDecompCNN <= '1';
-				o_rst <= '0';
+
+				o_address <= x"0000";
 				o_ready <= '0';
 				o_loadDecompImg <= '0';
 				o_writeMem <= '0';
@@ -195,19 +267,33 @@ BEGIN
 				o_process <= '0';
 				o_done <= '0';
 				o_readMem <= '0';
-			
+
+			WHEN s_process =>
+				o_process <= '1';
+
+				o_address <= x"FFFF";
+				o_ready <= '0';
+				o_loadDecompImg <= '0';
+				o_loadDecompCNN <= '0';
+				o_writeMem <= '0';
+				enAddCntrImg <= '0';
+				enAddCntrCNN <= '0';
+				o_done <= '0';
+				o_readMem <= '0';
+		
 			WHEN s_waitRI =>
 				IF(i_wordI = '1')	THEN
 					o_writeMem <= '1';
 					enAddCntrImg <= '1';
-					o_address <= ImgAddLines;
 
 				ELSE
 					o_writeMem <= '0';
 					enAddCntrImg <= '0';
 				END IF;
 
-				o_rst <= '0';
+				o_address(15 downto 10) <= "000000";
+				o_address(9 downto 0) <= imgAddLines;
+
 				o_ready <= '0';
 				o_loadDecompImg <= '0';
 				o_loadDecompCNN <= '0';
@@ -220,39 +306,41 @@ BEGIN
 				IF(i_wordC = '1')	THEN
 					o_writeMem <= '1';
 					enAddCntrCNN <= '1';
-					o_address <= CNNAddLines;
 
 				ELSE
 					o_writeMem <= '0';
 					enAddCntrCNN <= '0';
-				END IF;	
+				END IF;
 
-				o_rst <= '0';
-				o_ready <= '0';
+				o_address(15 downto 10) <= "000001";
+				o_address(9 downto 0) <= CNNAddLines;
+
+				o_ready <= '0';	
 				o_loadDecompImg <= '0';
 				o_loadDecompCNN <= '0';
 				enAddCntrImg <= '0';
 				o_process <= '0';
 				o_done <= '0';
 				o_readMem <= '0';
-	
-			WHEN s_process =>
-				o_process <= '1';
-				o_rst <= '0';
+
+			WHEN s_waitRL =>
+				o_address <= x"FFFF";
+
 				o_ready <= '0';
 				o_loadDecompImg <= '0';
 				o_loadDecompCNN <= '0';
 				o_writeMem <= '0';
 				enAddCntrImg <= '0';
 				enAddCntrCNN <= '0';
+				o_process <= '0';
 				o_done <= '0';
 				o_readMem <= '0';
 
 			WHEN s_sendR =>
 				o_done <= '1';
 				o_readMem <= '1';
-				o_address <= rsltAddLines;
-				o_rst <= '0';
+				o_address <= x"FFFF";
+
 				o_ready <= '0';
 				o_loadDecompImg <= '0';
 				o_loadDecompCNN <= '0';
@@ -260,8 +348,6 @@ BEGIN
 				enAddCntrImg <= '0';
 				enAddCntrCNN <= '0';
 				o_process <= '0';
-	
-			WHEN OTHERS =>
 		END CASE;
 	END PROCESS;
 END ARCHITECTURE;
