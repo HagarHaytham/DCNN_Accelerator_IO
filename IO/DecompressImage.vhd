@@ -11,7 +11,7 @@ entity DecompressImage is
 end entity DecompressImage;
 
 architecture ArchIODecompressImage of DecompressImage is
-    component Counter is
+    component UpdCounter is
         Port ( clk,rst,en : in  STD_LOGIC;      
                dir : in  STD_LOGIC;     -- direction of counter (up or down)
                count : out  STD_LOGIC_VECTOR (6 downto 0));   
@@ -101,8 +101,8 @@ process (proces,rst,cnt,cnt2,clk,bgn,packet)
     end if;
 end process;
 
-C1: Counter port map (clk,rstc1,en1,'1',cnt); -- cnt up (dir=1) , and stop when counter reaches the no of pixels
-C2 : Counter port map (clk,rstc2,en2,'1',cnt2);
+C1: UpdCounter port map (clk,rstc1,en1,'1',cnt); -- cnt up (dir=1) , and stop when counter reaches the no of pixels
+C2 : UpdCounter port map (clk,rstc2,en2,'1',cnt2);
 dataOut<= (others=>'1') when packet='0' and din(15) ='1'
 else (others=>'0') when packet='0' and din(15) ='0'
 else (others=>'1') when packet='1' and din(7)='1'
