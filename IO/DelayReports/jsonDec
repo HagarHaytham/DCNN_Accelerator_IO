@@ -1,0 +1,51 @@
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	clk                  : 432.3 MHz
+
+
+                        Critical Path Report
+
+
+Critical path #1, (path slack =  7.7):
+
+NAME                                     GATE              ARRIVAL              LOAD
+------------------------------------------------------------------------------------
+clk (offset)                                             0.00 (rising edge)
+delay thru clock network                                   0.00 (ideal)
+reg_dnCount(3)/CLK                       dffr              0.00 (rising edge)
+
+
+reg_dnCount(3)/Q                         dffr        0.00  0.50 dn             0.04
+ix1375/Y                                 nor02_2x    0.16  0.66 up             0.02
+ix227/Y                                  nand03      0.25  0.91 dn             0.06
+ix1348/Y                                 nor03_2x    0.22  1.13 up             0.03
+ix1481/Y                                 aoi22       0.18  1.31 dn             0.03
+ix293/Y                                  nor02_2x    0.16  1.47 up             0.02
+ix1489/Y                                 nor02_2x    0.12  1.59 dn             0.01
+ix351/Y                                  oai21       0.12  1.71 up             0.01
+ix1736/Y                                 inv01       0.12  1.83 dn             0.01
+ix1030/Y                                 mux21       0.28  2.10 up             0.02
+reg_upCEn/D                              dff         0.00  2.10 up             0.00
+data arrival time                                          2.10
+
+clk (offset)                                             0.00 (rising edge)
+delay thru clock network                                   0.00 (ideal)
+reg_upCEn/CLK                            dff               0.00 (rising edge)
+clock cycle                                                10.00
+library setup time                                        (0.21)
+
+data required time                                         9.79
+------------------------------------------------------------------------------------
+data required time                                         9.79
+data arrival time                                          2.10
+                                                        ----------
+slack                                                     7.69
+------------------------------------------------------------------------------------
+
+

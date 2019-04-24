@@ -1,0 +1,10 @@
+set_attribute .work.counter.archi.Clock -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.counter.archi.Clock -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.fBitUpCounter.archi.Clock -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.fBitUpCounter.archi.Clock -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.shiftReg.shReg.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.shiftReg.shReg.clk -name PULSE_WIDTH -value 5.000000 -port
+CLOCK_CYCLE "10.000000" .work.JDecomp.myArch.clk
+PULSE_WIDTH "5.000000" .work.JDecomp.myArch.clk
+set_attribute .work.JDecomp.myArch.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.JDecomp.myArch.clk -name PULSE_WIDTH -value 5.000000 -port
