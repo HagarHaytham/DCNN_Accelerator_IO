@@ -40,4 +40,4 @@ BEGIN
 	
 	o_cnt <= count;
 
-END ARCHITECTURE;
+END ARCHITECTURE;-
