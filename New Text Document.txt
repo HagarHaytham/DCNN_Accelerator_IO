@@ -1,0 +1,8 @@
+'0' = process and '1' = load
+'0' = CNN and '1' = Img
+
+flow :
+Rst
+Wait for ready (1 cycle)
+int+load+img or cnn
+int=0

@@ -23,13 +23,7 @@ component counter is
         
 end component;
 
---component Reg is 
---	port(
---		d : in std_logic_vector(15 downto 0);
---		rst,en,clk : in std_logic;
---		q : out std_logic_vector(15 downto 0)
---		);
---End component;
+
 
 component shiftReg is
 port( 
@@ -50,7 +44,7 @@ end component;
 
 signal dnCount : std_logic_vector (6 downto 0);
 signal upCount : std_logic_vector (3 downto 0);
-signal LorR : std_logic := '0' ;
+signal LorR : std_logic := '1'  ;
 signal v : std_logic := '0';
 signal countVal : std_logic_vector (6 downto 0) := "0000000";
 signal rstUpC,packDone,wdDone : std_logic := '0';
@@ -73,8 +67,13 @@ if(rising_edge(clk)) then
 		upCEn <= '1';
 		shRegEn <= '1';
 		packDone <= '0';
-	
+		rstUpC <= '0';
 	else
+			if (countVal = "0000000") then
+				upCEn <= '0';
+				shRegEn <= '0';
+				rstUpC <= '1';
+			end if;
 			
 			if (delayedPacket = '1') then
 				packDone <= '1';
@@ -128,27 +127,6 @@ if(rising_edge(clk)) then
 
 	
 
---if packet is done and decompressed word is ready
-
-
---			elsif(LorR = '0' ) then
---				if(dnCount = "0000000") then
---					LorR <= '1';
---					rstDnC <= '1';
---				else
---					v <= recPack(15);
---					countVal <= recPack(14 downto 8);
---				end if;
---				
---			elsif(dnCount = "0000000") then  
---						
---				rstDnC <= '1';
---				LorR <= '0';
---			else
---				v <= recPack(7);
---				countVal <= recPack(6 downto 0);
---				
---			end if;
 	end if;
 end if;
 end process;

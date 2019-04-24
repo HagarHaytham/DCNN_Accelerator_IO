@@ -1,6 +1,6 @@
 vsim -gui work.io
 # vsim -gui work.io 
-# Start time: 06:24:01 on Apr 24,2019
+# Start time: 09:15:07 on Apr 24,2019
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -20,20 +20,14 @@ vsim -gui work.io
 # Loading work.mux4x1(behavioral)
 add wave -position insertpoint sim:/io/ImgDecompU/*
 add wave -position insertpoint sim:/io/*
-force -freeze sim:/io/clk 1 0, 0 {50 ns} -r 100
+force -freeze sim:/io/clk 1 10, 0 {60 ns} -r 100
 force -freeze sim:/io/rst 1 0
-run
 force -freeze sim:/io/interrupt 0 0
-force -freeze sim:/io/loadProcess 0 0
+force -freeze sim:/io/loadProcess 1 0
 force -freeze sim:/io/CNNImage 1 0
 run
 force -freeze sim:/io/rst 0 0
+run
 force -freeze sim:/io/interrupt 1 0
-force -freeze sim:/io/loadProcess 0 0
 force -freeze sim:/io/din 0000001010000011 0
-run
-run
-run
-run
-run
 run
