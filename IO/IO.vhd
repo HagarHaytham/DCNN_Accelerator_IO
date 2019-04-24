@@ -3,6 +3,7 @@ USE IEEE.std_logic_1164.all;
 
 ENTITY IO IS
     PORT(
+--Interface with CPU
 		clk		:	IN	std_logic;
 		rst		:	IN	std_logic;
 		interrupt	:	IN	std_logic;
@@ -11,7 +12,11 @@ ENTITY IO IS
 		ready		:	OUT	std_logic;
 		done		:	OUT	std_logic;
 		din		:	IN	std_logic_vector(15 downto 0);
-		dout		:	OUT	std_logic_vector(3 downto 0));
+		dout		:	OUT	std_logic_vector(3 downto 0);
+--Interface with Accelerator
+		processDone	:	IN	std_logic;
+		processCntrlAccL:	OUT	std_logic
+	);
 END ENTITY IO;
 
 ARCHITECTURE struct OF IO IS
@@ -52,22 +57,26 @@ GENERIC(n	:	integer	:=	16);
 END COMPONENT;
 
 COMPONENT DecompressImage IS
-	PORT(
+    PORT(
 		clk		:	IN	std_logic;
 		rst		:	IN	std_logic;
 		din		:	IN	std_logic_vector(15 downto 0);
 		proces		:	IN	std_logic;
 		decompressed	:	OUT	std_logic;
-		dataOut		:	OUT	std_logic_vector(15 downto 0));
+		word		:	OUT	std_logic;
+		dataOut		:	OUT	std_logic_vector(15 downto 0)
+	);
 END COMPONENT;
 
 COMPONENT JDecomp IS 
-
-PORT(
-	clk,en,rst : in std_logic;
-	recPack : in std_logic_vector(15 downto 0);
-	wordDone,packetDone : out std_logic;
-	decompWord : out std_logic_vector(15 downto 0));
+	PORT(
+		clk		:	IN	std_logic;
+		en		:	IN	std_logic;
+		rst		:	IN	std_logic;
+		recPack		:	IN	std_logic_vector(15 downto 0);
+		wordDone	:	OUT	std_logic;
+		packetDone	:	OUT	std_logic;
+		decompWord	:	OUT	std_logic_vector(15 downto 0));
 
 
 END COMPONENT;
@@ -95,7 +104,6 @@ SIGNAL readMemCntrlMem	:	std_logic;
 SIGNAL wordMemDecomp	:	std_logic_vector(15 downto 0);
 SIGNAL wordImgDataMux	:	std_logic_vector(15 downto 0);
 SIGNAL wordCNNDataMux	:	std_logic_vector(15 downto 0);
-SIGNAL processCntrlAccL	:	std_logic;
 SIGNAL addCntrlMem	:	std_logic_vector(15 downto 0);
 SIGNAL dataIOIntrDecomp	:	std_logic_vector(15 downto 0);
 SIGNAL selDataMux	:	std_logic_vector(1 downto 0);
@@ -105,12 +113,12 @@ SIGNAL wordCNNMux	:	std_logic_vector(15 downto 0);
 BEGIN
 
 	IOContU:	IOController GENERIC MAP(16) PORT MAP(clk, rst, interrupt, loadProcess, CNNImage, doneImgCntrl, wordImgCntrl,
-								doneCNNCntrl, wordCNNCntrl, '0', ready, decompCntrlImg, decompCntrlCNN,
+								doneCNNCntrl, wordCNNCntrl, processDone, ready, decompCntrlImg, decompCntrlCNN,
 								writeMemCntrlMem, readMemCntrlMem, processCntrlAccL, done, addCntrlMem);
 
 	IOInterU:	IOInterface PORT MAP(clk, rst, interrupt, loadProcess, din, dataIOIntrDecomp);
 	
-	ImgDecompU:	DecompressImage PORT MAP(clk, rst, dataIOIntrDecomp, decompCntrlImg, doneImgCntrl, wordImgMux);
+	ImgDecompU:	DecompressImage PORT MAP(clk, rst, dataIOIntrDecomp, decompCntrlImg, doneImgCntrl, wordImgCntrl, wordImgMux);
 
 	JsonDecompU:	JDecomp PORT MAP(clk, decompCntrlCNN, rst, dataIOIntrDecomp, doneCNNCntrl, wordCNNCntrl, wordCNNMux);
 	
