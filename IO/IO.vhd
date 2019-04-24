@@ -81,18 +81,6 @@ COMPONENT JDecomp IS
 
 END COMPONENT;
 
-COMPONENT mux4X1 IS	--a 4X1 mux, so that Accelerometer logic can write to memory
-	PORT(
-		i_op0	:	IN	std_logic;
-		i_op1	:	IN	std_logic;
-		i_op2	:	IN	std_logic;
-		i_op3	:	IN	std_logic;
-		i_sel0	:	IN	std_logic;
-		i_sel1	:	IN	std_logic;
-		o_out	:	OUT	std_logic
-	);
-END COMPONENT;
-
 SIGNAL doneImgCntrl	:	std_logic;
 SIGNAL wordImgCntrl	:	std_logic;
 SIGNAL doneCNNCntrl	:	std_logic;
@@ -102,11 +90,8 @@ SIGNAL decompCntrlCNN	:	std_logic;
 SIGNAL writeMemCntrlMem	:	std_logic;
 SIGNAL readMemCntrlMem	:	std_logic;
 SIGNAL wordMemDecomp	:	std_logic_vector(15 downto 0);
-SIGNAL wordImgDataMux	:	std_logic_vector(15 downto 0);
-SIGNAL wordCNNDataMux	:	std_logic_vector(15 downto 0);
 SIGNAL addCntrlMem	:	std_logic_vector(15 downto 0);
 SIGNAL dataIOIntrDecomp	:	std_logic_vector(15 downto 0);
-SIGNAL selDataMux	:	std_logic_vector(1 downto 0);
 SIGNAL wordImgMux	:	std_logic_vector(15 downto 0);
 SIGNAL wordCNNMux	:	std_logic_vector(15 downto 0);
 
@@ -122,13 +107,17 @@ BEGIN
 
 	JsonDecompU:	JDecomp PORT MAP(clk, decompCntrlCNN, rst, dataIOIntrDecomp, doneCNNCntrl, wordCNNCntrl, wordCNNMux);
 	
-	loop1:	FOR i IN 0 TO 15 GENERATE
-			mux4X1U:	mux4X1 PORT MAP(wordImgMux(i), wordCNNMux(i), '0', '0', selDataMux(0), selDataMux(1), wordMemDecomp(i));
-		END GENERATE;
+--	loop1:	FOR i IN 0 TO 15 GENERATE
+--			mux4X1U:	mux4X1 PORT MAP(wordImgMux(i), wordCNNMux(i), '0', '0', selDataMux(0), selDataMux(1), wordMemDecomp(i));
+--		END GENERATE;
+--
+--	selDataMux <= "00"	WHEN doneImgCntrl = '1'
+--	ELSE "01"		WHEN doneCNNCntrl = '1'
+--	ELSE "10"		WHEN doneImgCntrl = '0'		--dummy condition to reserve choice
+--	ELSE "11"		WHEN doneCNNCntrl = '0';	--dummy condition to reserve choice
 
-	selDataMux <= "00"	WHEN doneImgCntrl = '1'
-	ELSE "01"		WHEN doneCNNCntrl = '1'
-	ELSE "10"		WHEN doneImgCntrl = '0'		--dummy condition to reserve choice
-	ELSE "11"		WHEN doneCNNCntrl = '0';	--dummy condition to reserve choice
+	wordMemDecomp <= wordImgMux	WHEN doneImgCntrl = '1'
+	ELSE wordCNNMux			WHEN doneCNNCntrl = '1'
+	ELSE x"0000";
 
 END ARCHITECTURE;
