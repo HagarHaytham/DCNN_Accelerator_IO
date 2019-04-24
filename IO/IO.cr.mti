@@ -1,4 +1,4 @@
-{D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\IO.vhd}
+{D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -62,15 +62,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity fBitUpCounter
 -- Compiling architecture archi of fBitUpCounter
 
-} {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Ram
--- Compiling architecture RamArch of Ram
-
 } {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/DecompressImage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/DecompressImage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -80,6 +71,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package STD_LOGIC_UNSIGNED
 -- Compiling entity DecompressImage
 -- Compiling architecture ArchIODecompressImage of DecompressImage
+
+} {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Ram
+-- Compiling architecture RamArch of Ram
 
 } {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016

@@ -118,7 +118,7 @@ R21
 R13
 R14
 Edecompressimage
-Z22 w1556043055
+Z22 w1556104347
 R1
 R2
 R3
@@ -132,9 +132,9 @@ VL7?V8_XmkK?dVzBTSXlUY2
 !s100 [59UiOzGL<jOU^>lV0;]>2
 R8
 32
-Z25 !s110 1556082016
+Z25 !s110 1556106577
 !i10b 1
-Z26 !s108 1556082016.000000
+Z26 !s108 1556106577.000000
 Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/DecompressImage.vhd|
 Z28 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/DecompressImage.vhd|
 !i113 1
@@ -175,11 +175,11 @@ VT83eaNJYaj>e21eWQ4lR<2
 !s100 ikHE^8<><M6PmWVC]IVhJ0
 R8
 32
-R25
+Z32 !s110 1556082016
 !i10b 1
-R26
-Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/fbitCounter.vhd|
-Z33 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/fbitCounter.vhd|
+Z33 !s108 1556082016.000000
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/fbitCounter.vhd|
+Z35 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/fbitCounter.vhd|
 !i113 1
 R13
 R14
@@ -195,32 +195,32 @@ VE?;2`d^8SDzLBIFcVCanJ2
 !s100 XXKSnAY94:VdF7`0JiOK[3
 R8
 32
-R25
-!i10b 1
-R26
 R32
+!i10b 1
 R33
+R34
+R35
 !i113 1
 R13
 R14
 Eio
-Z34 w1556081981
+Z36 w1556093518
 R3
 R4
 R5
-Z35 8D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\IO.vhd
-Z36 FD:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\IO.vhd
+Z37 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd
+Z38 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd
 l0
 L4
 VINfLCWY?TF6cmRgLL5zzM2
 !s100 F7fG;JZ5?T54`^k@4I<8B2
 R8
 32
-R9
+R25
 !i10b 1
-R10
-Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\IO.vhd|
-Z38 !s107 D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\IO.vhd|
+R26
+Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd|
+Z40 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd|
 !i113 1
 R13
 R14
@@ -228,17 +228,17 @@ Astruct
 R3
 R4
 DEx4 work 2 io 0 22 INfLCWY?TF6cmRgLL5zzM2
-l113
+l98
 L22
-VO<N3deLzc<6KghPna]hc_0
-!s100 fGCkBPbL^3YKfnRX;7@N33
+V46Bhfag_ZFB8DjCUjVP9Q3
+!s100 GAd<3AEaacVVYhabeQMjY3
 R8
 32
-R9
+R25
 !i10b 1
-R10
-R37
-R38
+R26
+R39
+R40
 !i113 1
 R13
 R14
@@ -252,24 +252,22 @@ VY;4V^e2XBb2fK7K6<8_T:0
 !s100 kQPWYCo[fY^R_;D^@^ig72
 R8
 32
-Z39 !s110 1555426054
+Z41 !s110 1555426054
 !i10b 1
-Z40 !s108 1555426054.000000
-!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd|
-!s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd|
+Z42 !s108 1555426054.000000
+R39
+R40
 !i113 1
 R13
 R14
 w1553260553
-FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd
-8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IO.vhd
 Eiocontroller
-Z41 w1556037517
+Z43 w1556037517
 R3
 R4
 R5
-Z42 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd
-Z43 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd
+Z44 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd
+Z45 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd
 l0
 L14
 VbIkAEb7m0RiHa6K^>k;H<1
@@ -279,8 +277,8 @@ R8
 R9
 !i10b 1
 R10
-Z44 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd|
-Z45 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd|
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd|
+Z47 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOController.vhd|
 !i113 1
 R13
 R14
@@ -297,8 +295,8 @@ R8
 R9
 !i10b 1
 R10
-R44
-R45
+R46
+R47
 !i113 1
 R13
 R14
@@ -315,19 +313,19 @@ R8
 !s110 1555381641
 !i10b 1
 !s108 1555381641.000000
-R44
-R45
+R46
+R47
 !i113 1
 R13
 R14
 w1553260783
 Eiointerface
-R41
+R43
 R3
 R4
 R5
-Z46 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd
-Z47 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd
+Z48 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd
+Z49 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd
 l0
 L4
 VLnAoICGHSjo`KTP17PAHh1
@@ -337,8 +335,8 @@ R8
 R9
 !i10b 1
 R10
-Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd|
-Z49 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd|
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd|
+Z51 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/IOInterface.vhd|
 !i113 1
 R13
 R14
@@ -355,8 +353,8 @@ R8
 R9
 !i10b 1
 R10
-R48
-R49
+R50
+R51
 !i113 1
 R13
 R14
@@ -370,61 +368,61 @@ V8Kgf_nT94P@`kQdU69nGa2
 !s100 9zzWnTLTJo:be[l:M_dnJ0
 R8
 32
-R39
+R41
 !i10b 1
-R40
-R48
-R49
+R42
+R50
+R51
 !i113 1
 R13
 R14
 w1553260991
 Ejdecomp
-Z50 w1556093417
+Z52 w1556104952
 R3
 R4
 R5
-Z51 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd
-Z52 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd
+Z53 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd
+Z54 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd
 l0
 L4
 VMLOzHk^HJT?<m>RWL7G6?0
 !s100 N_;eLzLA4gHb[^m?7c0zV0
 R8
 32
-Z53 !s110 1556093426
+Z55 !s110 1556106725
 !i10b 1
-Z54 !s108 1556093426.000000
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd|
-Z56 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd|
+Z56 !s108 1556106725.000000
+Z57 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd|
+Z58 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd|
 !i113 1
 R13
 R14
 Amyarch
 R3
 R4
-Z57 DEx4 work 7 jdecomp 0 22 MLOzHk^HJT?<m>RWL7G6?0
+Z59 DEx4 work 7 jdecomp 0 22 MLOzHk^HJT?<m>RWL7G6?0
 l54
 L16
-VYMbAF2n`D;5K@<oN[z3ch1
-!s100 kRgfD>PmMkfI?S^T<7f4G2
+VOzb785VFBoBo5:=YV`VH@0
+!s100 <z[i3h[O86<S8d9Lz?VMJ2
 R8
 32
-R53
-!i10b 1
-R54
 R55
+!i10b 1
 R56
+R57
+R58
 !i113 1
 R13
 R14
 Emux2x1
-Z58 w1555300502
+Z60 w1555300502
 R3
 R4
 R5
-Z59 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd
-Z60 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd
+Z61 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd
+Z62 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd
 l0
 L3
 V_]K<9B8@GRmzPO0k<m6Uf0
@@ -434,8 +432,8 @@ R8
 R9
 !i10b 1
 R10
-Z61 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd|
-Z62 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd|
+Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd|
+Z64 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Mux2x1.vhd|
 !i113 1
 R13
 R14
@@ -452,29 +450,29 @@ R8
 R9
 !i10b 1
 R10
-R61
-R62
+R63
+R64
 !i113 1
 R13
 R14
 Emux4x1
-R41
+R43
 R3
 R4
 R5
-Z63 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd
-Z64 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd
+Z65 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd
+Z66 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd
 l0
 L4
 VN7=8YEX9JKcl0@TQIVDR;0
 !s100 8elM>WkzlQF0h@[VU1EG90
 R8
 32
-R25
+R32
 !i10b 1
-R26
-Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd|
-Z66 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd|
+R33
+Z67 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd|
+Z68 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/mux4X1.vhd|
 !i113 1
 R13
 R14
@@ -488,21 +486,21 @@ V5D<nP91UajD=gan43`T?>3
 !s100 MIzbjUPblFS7gJl_R4bdz1
 R8
 32
-R25
+R32
 !i10b 1
-R26
-R65
-R66
+R33
+R67
+R68
 !i113 1
 R13
 R14
 Enreg
-Z67 w1555384337
+Z69 w1555384337
 R3
 R4
 R5
-Z68 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd
-Z69 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd
+Z70 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd
+Z71 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd
 l0
 L4
 VYz8TX6h4k1]IBMXE0VJL81
@@ -512,8 +510,8 @@ R8
 R9
 !i10b 1
 R10
-Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd|
-Z71 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd|
+Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd|
+Z73 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/Register.vhd|
 !i113 1
 R13
 R14
@@ -530,19 +528,19 @@ R8
 R9
 !i10b 1
 R10
-R70
-R71
+R72
+R73
 !i113 1
 R13
 R14
 Eram
-Z72 w1555300615
-Z73 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z74 w1555300615
+Z75 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 R3
 R4
 R5
-Z74 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd
-Z75 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd
+Z76 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd
+Z77 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd
 l0
 L5
 VRe]@TN[XR2AjW;Hkda`R]1
@@ -552,13 +550,13 @@ R8
 R9
 !i10b 1
 R10
-Z76 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd|
-Z77 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd|
+Z78 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd|
+Z79 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/ram.vhd|
 !i113 1
 R13
 R14
 Aramarch
-R73
+R75
 R3
 R4
 DEx4 work 3 ram 0 22 Re]@TN[XR2AjW;Hkda`R]1
@@ -571,29 +569,29 @@ R8
 R9
 !i10b 1
 R10
-R76
-R77
+R78
+R79
 !i113 1
 R13
 R14
 Eshiftreg
-Z78 w1556036884
+Z80 w1556036884
 R3
 R4
 R5
-Z79 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd
-Z80 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd
+Z81 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd
+Z82 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd
 l0
 L4
 V8dkog4WnFUA<8DZ9`QEI53
 !s100 4g[FR_NK5[m?Oo@LEgP;e1
 R8
 32
-R25
+R32
 !i10b 1
-R26
-Z81 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd|
-Z82 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd|
+R33
+Z83 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd|
+Z84 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd|
 !i113 1
 R13
 R14
@@ -607,32 +605,32 @@ VE9G[63Ik0GSnF02A5B`8B3
 !s100 _hRl@`:Ka2lj<d>jg@4Ro2
 R8
 32
-R25
+R32
 !i10b 1
-R26
-R81
-R82
+R33
+R83
+R84
 !i113 1
 R13
 R14
 Etflipflop
-Z83 w1555303113
+Z85 w1555303113
 R3
 R4
 R5
-Z84 8D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd
-Z85 FD:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd
+Z86 8D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd
+Z87 FD:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd
 l0
 L5
 V;FJ>HG]@Z7bz]k4ePmP[C0
 !s100 M_z;hj8DK_3U32;]G;e9F2
 R8
 32
-Z86 !s110 1555303159
+Z88 !s110 1555303159
 !i10b 1
-Z87 !s108 1555303158.000000
-Z88 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd|
-Z89 !s107 D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd|
+Z89 !s108 1555303158.000000
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd|
+Z91 !s107 D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\TFlipFlop.vhd|
 !i113 1
 R13
 R14
@@ -646,34 +644,34 @@ VF[N1IDh;4>cQJO[nd7mUn3
 !s100 R_XSTV^a7iV;?5zXaN0fZ0
 R8
 32
-R86
-!i10b 1
-R87
 R88
+!i10b 1
 R89
+R90
+R91
 !i113 1
 R13
 R14
 Eup_dn_counter_top
-Z90 w1555333458
+Z92 w1555333458
 R1
 R2
 R3
 R4
 R5
-Z91 8D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd
-Z92 FD:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd
+Z93 8D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd
+Z94 FD:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd
 l0
 L5
 VnnQNZK>Tl9AaeI73L?0>i3
 !s100 ZnSR>4TNdDZE5KJfF[zn81
 R8
 32
-Z93 !s110 1555333466
+Z95 !s110 1555333466
 !i10b 1
-Z94 !s108 1555333466.000000
-Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd|
-Z96 !s107 D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd|
+Z96 !s108 1555333466.000000
+Z97 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd|
+Z98 !s107 D:\CUFE\3B\VLSI\VLSI PROJECT\DCNN_Accelerator_IO\IO\Counter.vhd|
 !i113 1
 R13
 R14
@@ -689,34 +687,34 @@ VRec8ieUG23_iE]NeF_lC82
 !s100 NeLXCgBZX5`m`8QNzN1W70
 R8
 32
-R93
-!i10b 1
-R94
 R95
+!i10b 1
 R96
+R97
+R98
 !i113 1
 R13
 R14
 Eupcounter
-R34
+Z99 w1556094336
 R1
 R2
 R3
 R4
 R5
-Z97 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd
-Z98 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd
+Z100 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd
+Z101 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd
 l0
 L7
 Ve8[UEF6V^HWecOSZYSE0i0
 !s100 nIVgDk@jF=h4]hFNX3R081
 R8
 32
-R25
+Z102 !s110 1556106578
 !i10b 1
-R26
-Z99 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd|
-Z100 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd|
+Z103 !s108 1556106578.000000
+Z104 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd|
+Z105 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/upCounter.vhd|
 !i113 1
 R13
 R14
@@ -732,34 +730,34 @@ VSXSRde`SBVnOTZ]`gNY[J0
 !s100 5b^IHPKCaIA[>Wog<dU4g1
 R8
 32
-R25
+R102
 !i10b 1
-R26
-R99
-R100
+R103
+R104
+R105
 !i113 1
 R13
 R14
 Eupdcounter
-Z101 w1556043030
+Z106 w1556043030
 R1
 R2
 R3
 R4
 R5
-Z102 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd
-Z103 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd
+Z107 8D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd
+Z108 FD:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd
 l0
 L5
 VA:GlHf_Wz7o>h1lJQK_W71
 !s100 :oglXG3iKWg@>z15B=f]T2
 R8
 32
-R25
+R32
 !i10b 1
-R26
-Z104 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd|
-Z105 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd|
+R33
+Z109 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd|
+Z110 !s107 D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/updCounter.vhd|
 !i113 1
 R13
 R14
@@ -775,11 +773,11 @@ VMzHWI;]ZhFCgSFiCBflb?2
 !s100 FZdUZz3Uf5ERI[J0FaI=10
 R8
 32
-R25
+R32
 !i10b 1
-R26
-R104
-R105
+R33
+R109
+R110
 !i113 1
 R13
 R14

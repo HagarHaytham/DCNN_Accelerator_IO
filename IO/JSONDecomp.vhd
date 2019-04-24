@@ -44,13 +44,13 @@ end component;
 
 signal dnCount : std_logic_vector (6 downto 0);
 signal upCount : std_logic_vector (3 downto 0);
-signal LorR : std_logic := '1'  ;
-signal v : std_logic := '0';
-signal countVal : std_logic_vector (6 downto 0) := "0000000";
-signal rstUpC,packDone,wdDone : std_logic := '0';
+signal LorR : std_logic   ;
+signal v : std_logic ;
+signal countVal : std_logic_vector (6 downto 0) ;
+signal rstUpC,packDone,wdDone : std_logic ;
 signal finUpCRst: std_logic;
 signal decPacket : std_logic_vector(15 downto 0);
-signal bgn,bgnSec,loadEn,upCEn,shRegEn,delayedPacket : std_logic := '0';
+signal bgn,bgnSec,loadEn,upCEn,shRegEn,delayedPacket : std_logic ;
 begin
 
 process(clk,en,dnCount,upCount)
@@ -58,6 +58,22 @@ process(clk,en,dnCount,upCount)
 begin
 
 if(rising_edge(clk)) then
+
+	if ( rst = '1') then
+		LorR <= '1';
+		v <= '0';
+		countVal <= "0000000";
+		rstUpC <= '0';
+		packDone <= '0';
+		wdDone <= '0';
+		bgn <= '0';
+		bgnSec <= '0';
+		loadEn <= '0';
+		upCEn <= '0';
+		shRegEn <= '0';
+		delayedPacket <= '0';
+	else
+
 	if ( en ='1') then
 		bgn<= '1' ;
 		LorR<= '0';
@@ -126,7 +142,7 @@ if(rising_edge(clk)) then
 			end if;
 
 	
-
+		end if;
 	end if;
 end if;
 end process;
