@@ -25,7 +25,7 @@ BEGIN
 	process(i_clk, i_rst)
 	BEGIN
 		IF(i_rst = '1')	THEN
-			count <= (OTHERS => '1');
+			count <= (OTHERS => '0');
 
 		ELSIF rising_edge(i_clk)	THEN
 
