@@ -1,0 +1,36 @@
+
+*******************************************************
+
+Cell: IOController    View: behavioral    Library: work
+
+*******************************************************
+
+
+ Cell       Library  References     Total Area
+
+aoi22       tsmc035_typ    10 x      1     15 gates
+buf02       tsmc035_typ    10 x      1     10 gates
+dffr        tsmc035_typ     8 x      6     45 gates
+dffs_ni     tsmc035_typ    21 x      6    122 gates
+fake_gnd    tsmc035_typ     1 x      1      1 fake_gnd
+inv01       tsmc035_typ    17 x      1     13 gates
+inv02       tsmc035_typ     4 x      1      3 gates
+latch       tsmc035_typ     8 x      2     20 gates
+mux21       tsmc035_typ     2 x      2      4 gates
+nand02      tsmc035_typ    25 x      1     25 gates
+nand03      tsmc035_typ     6 x      1      7 gates
+nand04      tsmc035_typ     7 x      1     10 gates
+nor02_2x    tsmc035_typ    11 x      1     11 gates
+nor03_2x    tsmc035_typ     8 x      1     10 gates
+oai21       tsmc035_typ    35 x      1     43 gates
+xnor2       tsmc035_typ    20 x      2     38 gates
+
+ Number of ports :                      33
+ Number of nets :                      226
+ Number of instances :                 193
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of fake_gnd :                    1
+ Number of gates :                     376
+ Number of accumulated instances :     193
