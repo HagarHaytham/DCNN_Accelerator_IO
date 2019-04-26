@@ -1,0 +1,22 @@
+set_attribute .work.IOController_16.behavioral.i_clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.IOController_16.behavioral.i_clk -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.nReg_16.nRegArch.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.nReg_16.nRegArch.clk -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.IOInterface.behavioral.i_clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.IOInterface.behavioral.i_clk -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.UpdCounter.ArchUpdCounter.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.UpdCounter.ArchUpdCounter.clk -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.DecompressImage.ArchIODecompressImage.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.DecompressImage.ArchIODecompressImage.clk -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.counter.archi.Clock -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.counter.archi.Clock -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.fBitUpCounter.archi.Clock -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.fBitUpCounter.archi.Clock -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.shiftReg.shReg.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.shiftReg.shReg.clk -name PULSE_WIDTH -value 5.000000 -port
+set_attribute .work.JDecomp.myArch.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.JDecomp.myArch.clk -name PULSE_WIDTH -value 5.000000 -port
+CLOCK_CYCLE "10.000000" .work.IO.struct.clk
+PULSE_WIDTH "5.000000" .work.IO.struct.clk
+set_attribute .work.IO.struct.clk -name CLOCK_CYCLE -value 10.000000 -port
+set_attribute .work.IO.struct.clk -name PULSE_WIDTH -value 5.000000 -port
