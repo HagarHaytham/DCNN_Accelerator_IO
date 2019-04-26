@@ -1,0 +1,54 @@
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	clk                  : 304.8 MHz
+
+
+                        Critical Path Report
+
+
+Critical path #1, (path slack =  6.7):
+
+NAME                                         GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------
+clk (offset)                                                 0.00 (rising edge)
+delay thru clock network                                       0.00 (ideal)
+IOInterU_packetReg_reg_output(0)/CLK          dffr              0.00 (rising edge)
+
+
+IOInterU_packetReg_reg_output(0)/Q           dffr        0.00  0.50 up             0.06
+ix1429/Y                                     nor02_2x    0.20  0.71 dn             0.05
+ix507/Y                                      nand04      0.23  0.93 up             0.04
+ix1426/Y                                     nor02_2x    0.15  1.08 dn             0.01
+ix1830/Y                                     inv01       0.21  1.30 up             0.03
+ix1424/Y                                     xnor2       0.20  1.49 dn             0.03
+ix871/Y                                      xnor2       0.27  1.76 up             0.04
+ix877/Y                                      nor02_2x    0.11  1.87 dn             0.01
+ix1078/Y                                     nand04      0.22  2.09 up             0.02
+ix931/Y                                      nand03      0.16  2.25 dn             0.02
+ix1075/Y                                     inv01       0.15  2.40 up             0.01
+ix903/Y                                      oai21       0.14  2.55 dn             0.02
+ix1012/Y                                     mux21       0.26  2.81 up             0.02
+ImgDecompU_reg_decomp/D                      dffr        0.00  2.81 up             0.00
+data arrival time                                              2.81
+
+clk (offset)                                                 0.00 (rising edge)
+delay thru clock network                                       0.00 (ideal)
+ImgDecompU_reg_decomp/CLK                    dffr              0.00 (rising edge)
+clock cycle                                                    10.00
+library setup time                                            (0.47)
+
+data required time                                             9.53
+----------------------------------------------------------------------------------------
+data required time                                             9.53
+data arrival time                                              2.81
+                                                            ----------
+slack                                                         6.72
+----------------------------------------------------------------------------------------
+
+

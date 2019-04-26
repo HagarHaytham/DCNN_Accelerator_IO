@@ -1,0 +1,45 @@
+
+*******************************************************
+
+Cell: IO    View: struct    Library: work
+
+*******************************************************
+
+
+ Cell        Library  References     Total Area
+
+aoi21        tsmc035_typ     2 x      1      2 gates
+buf02        tsmc035_typ    10 x      1     10 gates
+dff          tsmc035_typ    14 x      5     67 gates
+dffr         tsmc035_typ    53 x      6    296 gates
+dffs_ni      tsmc035_typ     3 x      6     17 gates
+fake_gnd     tsmc035_typ     1 x      1      1 fake_gnd
+fake_vcc     tsmc035_typ     1 x      1      1 fake_vcc
+inv01        tsmc035_typ    34 x      1     26 gates
+inv02        tsmc035_typ     9 x      1      7 gates
+inv04        tsmc035_typ     2 x      1      2 gates
+mux21        tsmc035_typ    17 x      2     31 gates
+nand02       tsmc035_typ    61 x      1     61 gates
+nand02_2x    tsmc035_typ     1 x      1      1 gates
+nand03       tsmc035_typ    31 x      1     38 gates
+nand04       tsmc035_typ    15 x      1     22 gates
+nor02_2x     tsmc035_typ    41 x      1     41 gates
+nor02ii      tsmc035_typ     7 x      1      9 gates
+nor03_2x     tsmc035_typ    33 x      1     41 gates
+nor04        tsmc035_typ     1 x      1      1 gates
+oai21        tsmc035_typ    36 x      1     45 gates
+oai22        tsmc035_typ     7 x      1     10 gates
+oai321       tsmc035_typ     1 x      2      2 gates
+tri01        tsmc035_typ     4 x      1      5 gates
+xnor2        tsmc035_typ    65 x      2    124 gates
+
+ Number of ports :                      29
+ Number of nets :                      523
+ Number of instances :                 449
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of fake_gnd :                    1
+ Number of fake_vcc :                    1
+ Number of gates :                     860
+ Number of accumulated instances :     449
