@@ -81,6 +81,14 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity Ram
 -- Compiling architecture RamArch of Ram
 
+} {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/JSONDecomp.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity JDecomp
+-- Compiling architecture myArch of JDecomp
+
 } {} {}} {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CUFE/3B/VLSI/VLSI PROJECT/DCNN_Accelerator_IO/IO/shiftRegister.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
