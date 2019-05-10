@@ -1,0 +1,26 @@
+# //  ModelSim DE 2019.1 Jan  1 2019 Linux 4.4.0-140-generic
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# vsim work.accelerator 
+# Start time: 21:10:20 on May 10,2019
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.accelerator(struct)
+# doVOpenFlatFile(): INTERNAL ERROR: page load failed for file /home/ayman/Final_VLSI/DCNN_Accelerator_IO/IO/work/io/struct.psm (16:16 1:1 1373 0 0 23328 0x0:0x5cc074a3)
+# ** Error: (vsim-3171) Could not find machine code for '/home/ayman/Final_VLSI/DCNN_Accelerator_IO/IO/work.io(struct)'.
+# No such file or directory. (errno = ENOENT)
+# Load interrupted
+# Error loading design
+# End time: 21:10:20 on May 10,2019, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

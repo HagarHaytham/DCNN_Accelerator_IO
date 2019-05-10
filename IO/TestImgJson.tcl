@@ -1,5 +1,5 @@
 proc c  {} {
-    vcom integration.vhd   
+    vcom ~/Final_VLSI/DCNN_Accelerator_IO/IO/integration.vhd   
     # vcom *.vhd 
     echo "---------------COMPILATION IS OVER--------------------------"
     vsim work.accelerator
@@ -19,12 +19,12 @@ proc bitsToHex bits {
      return $hex
 }
 
-set fp [open "img.txt" r]
+set fp [open "~/Final_VLSI/DCNN_Accelerator_IO/IO/img.txt" r]
 set file_data [read $fp]
 close $fp
 set sz [string  length $file_data]
 
-set fjson [open "jsnC.txt" r]
+set fjson [open "~/Final_VLSI/DCNN_Accelerator_IO/IO/jsnC.txt" r]
 set datajson [read $fjson]
 close $fjson
 set szjson [string  length $datajson]
