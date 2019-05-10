@@ -3,7 +3,7 @@ USE IEEE.std_logic_1164.all;
 
 ENTITY IO IS
     PORT(
---Interface with CPU
+		--Interface with CPU
 		clk		:	IN	std_logic;
 		rst		:	IN	std_logic;
 		interrupt	:	IN	std_logic;
@@ -13,9 +13,14 @@ ENTITY IO IS
 		done		:	OUT	std_logic;
 		din		:	IN	std_logic_vector(15 downto 0);
 		dout		:	OUT	std_logic_vector(3 downto 0);
---Interface with Accelerator
+		--Interface with accelerator
 		processDone	:	IN	std_logic;
-		processCntrlAccL:	OUT	std_logic
+		processCntrlAccL:	OUT	std_logic;
+		--Interface with memory
+		memWE		:	OUT	std_logic;
+		memRE		:	OUT	std_logic;
+		addToMem	:	OUT	std_logic_vector(15 downto 0);
+		wordToMem	:	OUT	std_logic_vector(15 downto 0)
 	);
 END ENTITY IO;
 
@@ -116,8 +121,12 @@ BEGIN
 --	ELSE "10"		WHEN doneImgCntrl = '0'		--dummy condition to reserve choice
 --	ELSE "11"		WHEN doneCNNCntrl = '0';	--dummy condition to reserve choice
 
-	wordMemDecomp <= wordImgMux	WHEN doneImgCntrl = '1'
+	wordToMem <= wordImgMux	WHEN doneImgCntrl = '1'
 	ELSE wordCNNMux			WHEN doneCNNCntrl = '1'
 	ELSE x"0000";
+
+	memWE <= writeMemCntrlMem;
+	memRE <= readMemCntrlMem;
+	addToMem <= addCntrlMem;
 
 END ARCHITECTURE;
