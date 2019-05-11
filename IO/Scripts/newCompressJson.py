@@ -17,7 +17,8 @@ print('unCompressed data after adding layers number ', unCompressed)
 
 #used with fc to calculate number of channels
 out_sx_of_previous = list()
-
+#exponent, the amount of shift for weights and biases, to convert them to integer
+exponent = 8
 
 for i in range(layers):
 
@@ -92,10 +93,11 @@ for i in range(layers):
     	print('unCompressed after channels in fc', unCompressed)
     	#unCompressed += "\n"
 
-    # write bias before filter
+    #write bias before filter
     # if layer_type != 1:
     # 	for f in range(layer['filters']):
     # 		bias = layer['biases']
+    #         bias 
     # 		unCompressed += str(np.binary_repr(bias, 16))
     # 		print('unCompressed after bias', unCompressed)
     # 		#unCompressed += "\n"
