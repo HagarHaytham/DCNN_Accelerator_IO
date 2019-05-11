@@ -127,9 +127,13 @@ if(rising_edge(clk)) then
 			elsif( LorR='1' and dnCount="0000001") then
 				bgn <= '0';
 				shRegEn <= '0';
-				upCEn <= '0';
+				--upCEn <= '0';
 				LorR <= '0';
 				
+			end if;
+
+			if(LorR = '1' and dnCount = "0000010") then
+				upCEn <= '0';
 			end if;
 
 
