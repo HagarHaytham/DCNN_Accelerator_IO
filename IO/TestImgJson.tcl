@@ -94,7 +94,7 @@ for { set i 0 }  {$i < $szjson} {set i [expr {$i + 16}]} {
     puts $hex
     force -freeze sim:/accelerator/i_din $hex 0    
     run
-    # force -freeze sim:/accelerator/i_interrupt 0 0  
+    force -freeze sim:/accelerator/i_interrupt 0 0  
     incr j
     puts $j
     set x [examine o_ready]
@@ -104,7 +104,7 @@ for { set i 0 }  {$i < $szjson} {set i [expr {$i + 16}]} {
         run
         set x [examine o_ready]
     }
-    # force -freeze sim:/accelerator/i_interrupt 1 0
+    force -freeze sim:/accelerator/i_interrupt 1 0
 }
 
 
