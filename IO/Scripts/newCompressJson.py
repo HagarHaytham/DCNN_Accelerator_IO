@@ -92,15 +92,15 @@ for i in range(layers):
     	print('unCompressed after channels in fc', unCompressed)
     	#unCompressed += "\n"
 
-    write bias before filter
-    if layer_type != 1:
-    	for f in range(layer['filters']):
-    		bias = layer['biases']
-    		unCompressed += str(np.binary_repr(bias, 16))
-    		print('unCompressed after bias', unCompressed)
-    		#unCompressed += "\n"
+    # write bias before filter
+    # if layer_type != 1:
+    # 	for f in range(layer['filters']):
+    # 		bias = layer['biases']
+    # 		unCompressed += str(np.binary_repr(bias, 16))
+    # 		print('unCompressed after bias', unCompressed)
+    # 		#unCompressed += "\n"
 
-    		for d in range(layer['filters']['depth']):
+    # 		for d in range(layer['filters']['depth']):
     			
 
     			
