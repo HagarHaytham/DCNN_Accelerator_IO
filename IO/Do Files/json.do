@@ -35,7 +35,7 @@ force -freeze sim:/accelerator/i_rst 1 0
 force -freeze sim:/accelerator/i_interrupt 1 0
 force -freeze sim:/accelerator/i_loadProcess 1 0
 force -freeze sim:/accelerator/i_CNNImage 0 0
-force -freeze sim:/accelerator/i_din 0000111010000010 0
+force -freeze sim:/accelerator/i_din 0e82 0
 run
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /accelerator/mem
