@@ -80,16 +80,14 @@ if(rising_edge(clk)) then
 		v <= recPack(15);
 		countVal <= recPack(14 downto 8);
 		loadEn <= '1';
-		upCEn <= '1';
-		shRegEn <= '1';
 		packDone <= '0';
 		rstUpC <= '0';
 	else
-			if (countVal = "0000000") then
-				upCEn <= '0';
-				shRegEn <= '0';
-				rstUpC <= '1';
+			if (bgn = '1' and LorR = '0') then 
+				upCEn <= '1';
+				shRegEn <= '1';
 			end if;
+
 			
 			if (delayedPacket = '1') then
 				packDone <= '1';
@@ -104,12 +102,14 @@ if(rising_edge(clk)) then
 				countVal <= recPack(6 downto 0);
 				bgnSec <= '0';
 				loadEn <= '1';
-				shRegEn <= '1';
-				upCEn <= '1';
-			else
-				loadEn <= '0';
-			end if;
+				
+			elsif(bgn = '1' and LorR= '1' and bgnSec ='0') then
 
+				shRegEn <= '1';
+				upCEn <= '1';	
+				loadEn <= '0';		
+			end if;
+			
 			if(upCount = "1111") then
 				wdDone <= '1';
 				
