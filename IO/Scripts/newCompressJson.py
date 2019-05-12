@@ -139,7 +139,7 @@ for i in range(1, len(unCompressed)):
         compressed += prev_bit
         compressed += str(np.binary_repr(count, 7))
         prev_bit = unCompressed[i]
-        print('prev_bit', prev_bit, 'count', count)
+        # print('prev_bit', prev_bit, 'count', count)
         count = 1
 
 print(len(unCompressed))
